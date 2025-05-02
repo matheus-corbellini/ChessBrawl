@@ -3,46 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess Brawl</title>
+    <title>Chess Brawl - Torneio Profissional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Chess Brawl</h1>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-chess"></i> Chess Brawl</h1>
+            <p class="subtitle">Torneio Profissional de Xadrez</p>
+        </header>
 
-    <section id="cadastro">
-        <h2>Cadastro de Jogadores</h2>
-        <form id="form-jogador">
-            <input type="text" id="nome" placeholder="Nome" required>
-            <input type="text" id="nickname" placeholder="Nickname" required>
-            <input type="number" id="ranking" placeholder="Ranking (1-15000)" required>
-            <button type="submit">Cadastrar Jogador</button>
-        </form>
-    </section>
-
-    <section id="ranking">
-        <h2>Ranking</h2>
-        <button id="carregar-ranking">Carregar Ranking</button>
-        <ul id="ranking-list"></ul>
-    </section>
-
-    <section id="torneio">
-        <h2>Sortear e Administrar Partidas</h2>
-        <button id="sortear-partidas">Sortear Partidas</button>
-        <div id="rodadas"></div>
-    </section>
-
-    <section id="admin">
-        <h2>Administrar Partidas</h2>
-        <div id="partida-selecionada">
-            <p>Escolha uma partida para administrar.</p>
+        <div class="control-panel">
+            <button class="toggle-btn" data-target="cadastro-section">
+                <i class="fas fa-user-plus"></i> Cadastro
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <button class="toggle-btn" data-target="ranking-section">
+                <i class="fas fa-trophy"></i> Ranking
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <button class="toggle-btn" data-target="torneio-section">
+                <i class="fas fa-chess-board"></i> Torneio
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <button class="toggle-btn" data-target="admin-section">
+                <i class="fas fa-cogs"></i> Administração
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <button class="toggle-btn" data-target="resultados-section">
+                <i class="fas fa-award"></i> Resultados
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <button id="novo-torneio" class="btn btn-warning">
+                <i class="fas fa-redo"></i> Novo Torneio
+            </button>
         </div>
-    </section>
 
-    <section id="resultados">
-        <h2>Resultados Finais</h2>
-        <button id="mostrar-resultados">Mostrar Resultados</button>
-        <div id="tabela-resultados"></div>
-    </section>
+        <main class="content-area">
+            <section id="cadastro-section" class="content-section active">
+                <div class="section-header">
+                    <h2><i class="fas fa-user-edit"></i> Cadastro de Jogadores</h2>
+                </div>
+                <form id="form-jogador" class="form-style">
+                    <div class="form-group">
+                        <label for="nome"><i class="fas fa-id-card"></i> Nome:</label>
+                        <input type="text" id="nome" placeholder="Nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname"><i class="fas fa-at"></i> Nickname:</label>
+                        <input type="text" id="nickname" placeholder="Apelido no jogo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ranking"><i class="fas fa-star"></i> Ranking (1-15000):</label>
+                        <input type="number" id="ranking" placeholder="Pontuação" min="1" max="15000" required>
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-save"></i> Cadastrar Jogador
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section id="ranking-section" class="content-section active">
+                <div class="section-header">
+                    <h2><i class="fas fa-medal"></i> Ranking Geral</h2>
+                    <div class="button-group">
+                        <button id="carregar-ranking" class="btn btn-secondary">
+                            <i class="fas fa-sync-alt"></i> Atualizar
+                        </button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="ranking-table">
+                        <thead>
+                            <tr>
+                                <th>Posição</th>
+                                <th>Jogador</th>
+                                <th>Nickname</th>
+                                <th>Pontos</th>
+                                <th>Vitórias</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ranking-list">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="torneio-section" class="content-section active">
+                <div class="section-header">
+                    <h2><i class="fas fa-chess-knight"></i> Torneio</h2>
+                    <div class="button-group">
+                        <button id="sortear-partidas" class="btn btn-primary">
+                            <i class="fas fa-random"></i> Sortear Partidas
+                        </button>
+                    </div>
+                </div>
+                <div id="rodadas" class="matches-container">
+                </div>
+            </section>
+
+            <section id="admin-section" class="content-section active">
+                <div class="section-header">
+                    <h2><i class="fas fa-cogs"></i> Administração de Partida</h2>
+                </div>
+                <div id="partida-selecionada" class="selected-match">
+                    <p>Selecione uma partida para administrar</p>
+                </div>
+                <div id="placar" class="scoreboard">
+                </div>
+                <div id="partida-actions" class="action-panel">
+                    <div class="form-group">
+                        <label for="jogador-alvo"><i class="fas fa-user"></i> Jogador:</label>
+                        <select id="jogador-alvo" class="form-control">
+                            <option value="0">Jogador 1</option>
+                            <option value="1">Jogador 2</option>
+                        </select>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button onclick="aplicarEvento('jogadaOriginal')" class="btn btn-success">
+                            <i class="fas fa-plus-circle"></i> Jogada Original (+5)
+                        </button>
+                        <button onclick="aplicarEvento('gafe')" class="btn btn-danger">
+                            <i class="fas fa-minus-circle"></i> Gafe (-3)
+                        </button>
+                        <button onclick="aplicarEvento('posicionamentoVantajoso')" class="btn btn-success">
+                            <i class="fas fa-arrow-up"></i> Posicionamento (+2)
+                        </button>
+                        <button onclick="aplicarEvento('desrespeito')" class="btn btn-danger">
+                            <i class="fas fa-times-circle"></i> Desrespeito (-5)
+                        </button>
+                        <button onclick="aplicarEvento('ataqueFuria')" class="btn btn-danger">
+                            <i class="fas fa-angry"></i> Ataque de Fúria (-7)
+                        </button>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button id="simular-partida" class="btn btn-warning">
+                            <i class="fas fa-dice"></i> Simular Evento
+                        </button>
+                        <button id="finalizar-rodada" class="btn btn-primary">
+                            <i class="fas fa-flag-checkered"></i> Finalizar Rodada
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="resultados-section" class="content-section active">
+                <div class="section-header">
+                    <h2><i class="fas fa-award"></i> Resultados Finais</h2>
+                    <div class="button-group">
+                        <button id="mostrar-resultados" class="btn btn-primary">
+                            <i class="fas fa-table"></i> Mostrar Resultados
+                        </button>
+                    </div>
+                </div>
+                <div id="tabela-resultados" class="results-container">
+                </div>
+            </section>
+        </main>
+
+        <div id="mensagens" class="message-container"></div>
+    </div>
 
     <script src="script.js"></script>
 </body>
