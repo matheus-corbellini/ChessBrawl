@@ -51,6 +51,56 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  document
+    .getElementById("cadastro-rapido")
+    .addEventListener("click", cadastroRapido);
+
+  async function cadastroRapido() {
+    if (jogadores.length > 0) {
+      const confirmado = confirm(
+        "Isso substituirá os jogadores atuais. Continuar?"
+      );
+      if (!confirmado) return;
+    }
+
+    jogadores = [];
+
+    const jogadoresFicticios = [
+      { nome: "Matheus", nickname: "FischerX", ranking: 8500 },
+      { nome: "Ana", nickname: "AnaChess", ranking: 4200 },
+      { nome: "Magnus Silva", nickname: "MagnusBR", ranking: 13500 },
+      { nome: "Joao Oliveira", nickname: "JoaoP", ranking: 7800 },
+      { nome: "Garry", nickname: "GarryK", ranking: 11200 },
+      { nome: "Lucas Silva", nickname: "SilvaKing", ranking: 6500 },
+      { nome: "Pedro", nickname: "Pedrinho", ranking: 14300 },
+      { nome: "Artur silva", nickname: "ArturS", ranking: 9500 },
+    ];
+
+    for (const jogador of jogadoresFicticios) {
+      const novoJogador = {
+        nome: jogador.nome,
+        nickname: jogador.nickname,
+        ranking: jogador.ranking,
+        pontos: 70,
+        eventos: {
+          jogadaOriginal: 0,
+          gafe: 0,
+          posicionamentoVantajoso: 0,
+          desrespeito: 0,
+          ataqueFuria: 0,
+        },
+        vitorias: 0,
+        historicoPontos: [70],
+      };
+
+      jogadores.push(novoJogador);
+      atualizarTabelaRanking();
+      await new Promise((resolve) => setTimeout(resolve, 200));
+    }
+
+    mostrarMensagem("8 jogadores cadastrados com sucesso!", "success");
+  }
+
   function mostrarMensagem(texto, tipo = "info") {
     const container = document.getElementById("mensagens");
     const mensagem = document.createElement("div");
@@ -75,9 +125,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const regex = /^[A-Za-z\s]+$/;
       return regex.test(nome);
     }
+
     const nome = UI.nome.value.trim();
     const nickname = UI.nickname.value.trim();
     const ranking = parseInt(UI.ranking.value);
+
+    if (jogadores.length >= 8) {
+      mostrarMensagem("Máximo de 8 jogadores atingido!", "error");
+      return;
+    }
 
     if (!nome || !nickname || isNaN(ranking)) {
       mostrarMensagem("Preencha todos os campos corretamente!", "error");
@@ -148,7 +204,11 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("click", atualizarTabelaRanking);
 
   document.getElementById("sortear-partidas").addEventListener("click", () => {
-    if (jogadores.length < 4 || jogadores.length % 2 !== 0) {
+    if (
+      jogadores.length < 4 ||
+      jogadores.length > 8 ||
+      jogadores.length % 2 !== 0
+    ) {
       mostrarMensagem("Número de jogadores deve ser par (4, 6 ou 8)!", "error");
       return;
     }
@@ -472,7 +532,31 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  function reiniciarTorneio() {
+  async function confirmarAcao() {
+    const dialog = document.getElementById("confirm-dialog");
+    dialog.showModal();
+
+    return new Promise((resolve) => {
+      document.getElementById("confirm-yes").onclick = () => {
+        dialog.close();
+        resolve(true);
+      };
+
+      document.getElementById("confirm-no").onclick = () => {
+        dialog.close();
+        resolve(false);
+      };
+    });
+  }
+
+  async function reiniciarTorneio() {
+    const confirmado = await confirmarAcao();
+
+    if (!confirmado) {
+      mostrarMensagem("Reinício cancelado", "info");
+      return;
+    }
+
     jogadores = [];
     rodadas = [];
     partidaAtual = null;
@@ -480,38 +564,23 @@ document.addEventListener("DOMContentLoaded", () => {
     faseAtual = 1;
     eventosPorRodada = {};
 
-    const uiElements = [
-      "ranking-list",
-      "rodadas",
-      "placar",
-      "tabela-resultados",
-      "partida-selecionada",
-    ];
-
-    uiElements.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) {
-        element.innerHTML =
-          id === "partida-selecionada"
-            ? "<p>Selecione uma partida para administrar</p>"
-            : "";
-      }
-    });
-
-    document.getElementById("partida-actions").style.display = "none";
-    document.getElementById("finalizar-rodada").style.display = "none";
+    UI.rankingList.innerHTML = "";
+    UI.rodadasDiv.innerHTML = "";
+    UI.placar.innerHTML = "";
+    UI.tabelaResultados.innerHTML = "";
+    UI.partidaSelecionada.innerHTML =
+      "<p>Selecione uma partida para administrar</p>";
+    UI.partidaActions.style.display = "none";
+    UI.finalizarRodadaBtn.style.display = "none";
 
     document.getElementById("form-jogador").reset();
 
     mostrarMensagem(
-      "Sistema reiniciado. Cadastre novos jogadores para iniciar.",
+      "Torneio reiniciado com sucesso! Cadastre novos jogadores.",
       "success"
     );
 
-    setTimeout(() => {
-      const nomeInput = document.getElementById("nome");
-      if (nomeInput) nomeInput.focus();
-    }, 300);
+    setTimeout(() => document.getElementById("nome").focus(), 100);
   }
 
   window.aplicarEvento = function (evento) {
