@@ -62,6 +62,9 @@
                         <button type="submit" class="btn btn-success">
                             <i class="fas fa-save"></i> Cadastrar Jogador
                         </button>
+                        <button type="button" id="cadastro-rapido" class="btn btn-primary">
+                            <i class="fas fa-bolt"></i> Cadastro Rápido
+                        </button>
                     </div>
                 </form>
             </section>
@@ -168,6 +171,24 @@
 
         <div id="mensagens" class="message-container"></div>
     </div>
+
+    <dialog id="confirm-dialog" aria-labelledby="confirm-title">
+        <div class="confirm-content">
+            <div class="confirm-header">
+                <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                <h3 id="confirm-title">Confirmação</h3>
+            </div>
+            <p>Tem certeza que deseja reiniciar o torneio?</p>
+            <div class="confirm-buttons">
+                <button id="confirm-no" class="btn btn-cancel" aria-label="Cancelar reinício">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+                <button id="confirm-yes" class="btn btn-confirm" aria-label="Confirmar reinício">
+                    <i class="fas fa-check"></i> Confirmar
+                </button>
+            </div>
+        </div>
+    </dialog>
 
     <script src="script.js"></script>
 </body>
