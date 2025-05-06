@@ -179,6 +179,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const nickname = UI.nickname.value.trim();
     const ranking = parseInt(UI.ranking.value);
 
+    function isNomeValido(nome) {
+      const regex = /^[A-Za-z\s]+$/;
+      return regex.test(nome);
+    }
+
     if (state.jogadores.length >= CONFIG.MAX_JOGADORES) {
       mostrarMensagem("Máximo de 8 jogadores atingido!", "error");
       return;
@@ -200,6 +205,11 @@ document.addEventListener("DOMContentLoaded", () => {
       )
     ) {
       mostrarMensagem("Nickname já existe!", "error");
+      return;
+    }
+
+    if (!isNomeValido(nome)) {
+      mostrarMensagem("Nome inválido, tente outro!", "error");
       return;
     }
 
