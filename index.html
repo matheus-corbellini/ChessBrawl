@@ -23,6 +23,10 @@
                 <i class="fas fa-trophy"></i> Ranking
                 <span class="arrow"><i class="fas fa-chevron-down"></i></span>
             </button>
+            <button class="toggle-btn" data-target="profecias-section">
+                <i class="fas fa-scroll"></i> Profecias
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
             <button class="toggle-btn" data-target="torneio-section">
                 <i class="fas fa-chess-board"></i> Torneio
                 <span class="arrow"><i class="fas fa-chevron-down"></i></span>
@@ -69,7 +73,7 @@
                 </form>
             </section>
 
-            <section id="ranking-section" class="content-section active">
+            <section id="ranking-section" class="content-section">
                 <div class="section-header">
                     <h2><i class="fas fa-medal"></i> Ranking Geral</h2>
                     <div class="button-group">
@@ -87,6 +91,7 @@
                                 <th>Nickname</th>
                                 <th>Pontos</th>
                                 <th>Vitórias</th>
+                                <th>Título</th>
                             </tr>
                         </thead>
                         <tbody id="ranking-list">
@@ -95,7 +100,42 @@
                 </div>
             </section>
 
-            <section id="torneio-section" class="content-section active">
+            <section id="profecias-section" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-scroll"></i> Sistema de Profecias</h2>
+                </div>
+                <div class="profecias-content">
+                    <div class="profecias-admin">
+                        <h3><i class="fas fa-user-shield"></i> Painel do Administrador</h3>
+                        <div class="form-group">
+                            <label for="jogador-profecia"><i class="fas fa-user"></i> Selecionar Jogador:</label>
+                            <select id="jogador-profecia" class="form-control">
+                                <option value="">Selecione um jogador</option>
+                            </select>
+                        </div>
+                        <button id="atribuir-profecia" class="btn btn-primary">
+                            <i class="fas fa-magic"></i> Atribuir Profecia
+                        </button>
+                    </div>
+                    
+                    <div id="profecias-ativas" class="profecias-list">
+                        <h3><i class="fas fa-list"></i> Profecias Ativas</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Jogador</th>
+                                    <th>Profecia</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="lista-profecias">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="torneio-section" class="content-section">
                 <div class="section-header">
                     <h2><i class="fas fa-chess-knight"></i> Torneio</h2>
                     <div class="button-group">
@@ -108,7 +148,7 @@
                 </div>
             </section>
 
-            <section id="admin-section" class="content-section active">
+            <section id="admin-section" class="content-section">
                 <div class="section-header">
                     <h2><i class="fas fa-cogs"></i> Administração de Partida</h2>
                 </div>
@@ -155,7 +195,7 @@
                 </div>
             </section>
 
-            <section id="resultados-section" class="content-section active">
+            <section id="resultados-section" class="content-section">
                 <div class="section-header">
                     <h2><i class="fas fa-award"></i> Resultados Finais</h2>
                     <div class="button-group">
@@ -185,6 +225,75 @@
                 </button>
                 <button id="confirm-yes" class="btn btn-confirm" aria-label="Confirmar reinício">
                     <i class="fas fa-check"></i> Confirmar
+                </button>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="profecia-dialog" aria-labelledby="profecia-title">
+        <div class="profecia-content">
+            <div class="profecia-header">
+                <i class="fas fa-scroll" aria-hidden="true"></i>
+                <h3 id="profecia-title">Atribuir Profecia</h3>
+                <p id="jogador-profecia-nome"></p>
+            </div>
+            
+            <div class="profecia-options">
+                <div class="profecia-option" data-id="1">
+                    <div class="profecia-icon">🧹</div>
+                    <div class="profecia-text">Vença uma partida sem cometer gafes</div>
+                    <div class="profecia-dificuldade media">Média</div>
+                </div>
+                
+                <div class="profecia-option" data-id="2">
+                    <div class="profecia-icon">🎨</div>
+                    <div class="profecia-text">Use 3 'Jogadas Originais' em uma partida</div>
+                    <div class="profecia-dificuldade alta">Alta</div>
+                </div>
+                
+                <div class="profecia-option" data-id="3">
+                    <div class="profecia-icon">🎯</div>
+                    <div class="profecia-text">Termine com exatamente 75 pontos</div>
+                    <div class="profecia-dificuldade altissima">Altíssima</div>
+                </div>
+                
+                <div class="profecia-option" data-id="4">
+                    <div class="profecia-icon">🔄</div>
+                    <div class="profecia-text">Vença após estar 10pts atrás</div>
+                    <div class="profecia-dificuldade alta">Alta</div>
+                </div>
+                
+                <div class="profecia-option" data-id="5">
+                    <div class="profecia-icon">😈</div>
+                    <div class="profecia-text">Tenha mais 'Desrespeitos' que o oponente e vença</div>
+                    <div class="profecia-dificuldade media">Média</div>
+                </div>
+                
+                <div class="profecia-option" data-id="6">
+                    <div class="profecia-icon">🚫</div>
+                    <div class="profecia-text">Não use 'Posicionamento Vantajoso' em nenhuma partida</div>
+                    <div class="profecia-dificuldade baixa">Baixa</div>
+                </div>
+                
+                <div class="profecia-option" data-id="7">
+                    <div class="profecia-icon">⚡</div>
+                    <div class="profecia-text">Faça 2 'Ataques de Fúria' consecutivos</div>
+                    <div class="profecia-dificuldade media">Média</div>
+                </div>
+                
+                <div class="profecia-option" data-id="8">
+                    <div class="profecia-icon">🌈</div>
+                    <div class="profecia-text">Vença o torneio sem repetir nenhum evento</div>
+                    <div class="profecia-dificuldade altissima">Altíssima</div>
+                </div>
+            </div>
+            
+            <div class="profecia-buttons">
+                <button id="sortear-profecia" class="btn btn-warning">
+                    <i class="fas fa-random"></i> Sortear Aleatoriamente
+                </button>
+                <button id="cancelar-profecia" class="btn btn-cancel">
+                    <i class="fas fa-times"></i> Cancelar
                 </button>
             </div>
         </div>
