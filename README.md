@@ -22,7 +22,7 @@ https://matheus-corbellini.github.io/ChessBrawl/
 ## 📦 Instalação
 ```bash
 1. Clone o repositório:
-git clone https://github.com/seu-usuario/chess-brawl.git
+git clone https://github.com/matheus-corbellini/chess-brawl.git
 
 2. Acesse a pasta do projeto:
 cd chess-brawl
