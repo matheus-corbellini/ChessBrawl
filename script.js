@@ -848,7 +848,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Limpa o state
     state.jogadores = [];
     state.rodadas = [];
     state.partidaAtual = null;
@@ -856,19 +855,16 @@ document.addEventListener("DOMContentLoaded", () => {
     state.faseAtual = 1;
     state.eventosPorRodada = {};
 
-    // Limpa as interfaces
     UI.rankingList.innerHTML = "";
     UI.rodadasDiv.innerHTML = "";
     UI.placar.innerHTML = "";
     UI.tabelaResultados.innerHTML = "";
 
-    // NOVO: Limpa a tabela de profecias
     const listaProfecias = document.getElementById("lista-profecias");
     if (listaProfecias) {
       listaProfecias.innerHTML = "";
     }
 
-    // Limpa o dropdown de profecias se existir
     const jogadorProfeciaDropdown = document.getElementById("jogador-profecia");
     if (jogadorProfeciaDropdown) {
       jogadorProfeciaDropdown.innerHTML =

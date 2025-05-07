@@ -165,7 +165,6 @@ body {
   margin: 15px 0;
 }
 
-/* Formulários */
 .form-style {
   max-width: 600px;
   margin: 0 auto;
@@ -346,7 +345,6 @@ tr:hover {
   font-weight: bold;
 }
 
-/* Resultados */
 .results-container {
   margin-top: 20px;
 }
