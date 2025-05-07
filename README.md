@@ -19,8 +19,8 @@ Plataforma de torneios de xadrez com mecânicas inovadoras que incluem sistema d
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)
 
 ## 📦 Instalação
-1. Clone o repositório:
 ```bash
+1. Clone o repositório:
 git clone https://github.com/seu-usuario/chess-brawl.git
 
 2. Acesse a pasta do projeto:
