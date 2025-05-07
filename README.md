@@ -17,7 +17,7 @@ Plataforma de torneios de xadrez com mecânicas inovadoras que incluem sistema d
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)
 
 ## Site da aplicação
-https://matheus-corbellini.github.io/ChessBrawl/
+[https://matheus-corbellini.github.io/ChessBrawl/](https://matheus-corbellini.github.io/ChessBrawl/)
 
 ## 📦 Instalação
 ```bash
