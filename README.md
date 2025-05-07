@@ -1,7 +1,5 @@
 # Chess Brawl - Torneio Interativo de Xadrez
 
-![Chess Banner](https://img.icons8.com/color/96/000000/chess.png)
-
 ## 🚀 Visão Geral
 Plataforma de torneios de xadrez com mecânicas inovadoras que incluem sistema de profecias e eventos especiais, desenvolvida com tecnologias web modernas.
 
@@ -18,6 +16,9 @@ Plataforma de torneios de xadrez com mecânicas inovadoras que incluem sistema d
 ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)
 
+## Site da aplicação
+https://matheus-corbellini.github.io/ChessBrawl/
+
 ## 📦 Instalação
 ```bash
 1. Clone o repositório:
@@ -30,6 +31,7 @@ cd chess-brawl
 start index.html  # Windows
 open index.html  # Mac
 xdg-open index.html  # Linux
+ou instale a extensão live server no VScode, e abra por ele.
 
 🎮 Como Jogar
 Cadastre os jogadores
