@@ -30,6 +30,7 @@ cd chess-brawl
 start index.html  # Windows
 open index.html  # Mac
 xdg-open index.html  # Linux
+```bash
 
 🎮 Como Jogar
 Cadastre os jogadores
