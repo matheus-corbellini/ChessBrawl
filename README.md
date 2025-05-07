@@ -1,45 +1,52 @@
-Chess Brawl - Torneio Profissional de Xadrez
-📝 Descrição
-O Chess Brawl é uma plataforma inovadora que combina as regras tradicionais do xadrez com mecânicas estratégicas modernas, incluindo um sistema de profecias desafiadoras e eventos especiais que transformam cada partida em uma experiência única.
+# Chess Brawl - Torneio Interativo de Xadrez
 
-✨ Funcionalidades Principais
-✅ Sistema de cadastro de jogadores com nickname e pontuação
+![Chess Banner](https://img.icons8.com/color/96/000000/chess.png)
 
-🏆 Torneios com partidas personalizadas e sorteio automático
+## 🚀 Visão Geral
+Plataforma de torneios de xadrez com mecânicas inovadoras que incluem sistema de profecias e eventos especiais, desenvolvida com tecnologias web modernas.
 
-🔮 8 profecias temáticas com diferentes níveis de dificuldade
+## ✨ Funcionalidades
+- **Sistema de Cadastro** de jogadores com nickname e ranking
+- **Torneios Automatizados** com sorteio de partidas
+- **8 Profecias Temáticas** com diferentes níveis de desafio
+- **Eventos Especiais** durante as partidas (Jogada Original, Gafe, etc.)
+- **Painel Administrativo** completo
+- **Interface Responsiva** para todos os dispositivos
 
-🎯 Eventos especiais durante as partidas (Jogada Original, Gafe, Ataque de Fúria)
+## 🛠️ Tecnologias
+![HTML5](https://img.shields.io/badge/-HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/-CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)
 
-📊 Ranking dinâmico e painel de resultados detalhados
+## 📦 Instalação
+1. Clone o repositório:
+```bash
+git clone https://github.com/seu-usuario/chess-brawl.git
+2. Acesse a pasta do projeto:
+cd chess-brawl
+3. Abra no navegador
+start index.html  # Windows
+open index.html  # Mac
+xdg-open index.html  # Linux
 
-📱 Interface responsiva para desktop e mobile
+🎮 Como Jogar
+Cadastre os jogadores
 
-🚀 Como Executar
-Baixe os arquivos do projeto (HTML, CSS e JS)
+Atribua profecias aos participantes
 
-Abra o arquivo index.html em qualquer navegador moderno
+Inicie o torneio e sorteie as partidas
 
-Comece a usar:
+Administre os eventos especiais durante as partidas
 
-Cadastre jogadores na seção "Cadastro"
+Acompanhe os resultados em tempo real
 
-Acesse "Profecias" para atribuir desafios
+📌 Roadmap
+Sistema básico de torneio
 
-Use "Torneio" para sortear e gerenciar partidas
+Módulo de profecias
 
-Consulte "Resultados" para ver estatísticas finais
+Multiplayer online
 
-⚙️ Tecnologias Utilizadas
-Frontend: HTML5, CSS3, JavaScript Vanilla
+Sistema de login
 
-Armazenamento: LocalStorage do navegador
-
-Design: Responsivo com Media Queries
-
-📌 Requisitos
-Navegador atualizado (Chrome, Firefox, Edge ou Safari)
-
-JavaScript habilitado
-
-Resolução mínima recomendada: 320px (celulares)
+Modo campanha
