@@ -22,10 +22,10 @@ Plataforma de torneios de xadrez com mecânicas inovadoras que incluem sistema d
 1. Clone o repositório:
 ```bash
 git clone https://github.com/seu-usuario/chess-brawl.git
-```bash
 
 2. Acesse a pasta do projeto:
 cd chess-brawl
+
 3. Abra no navegador
 start index.html  # Windows
 open index.html  # Mac
